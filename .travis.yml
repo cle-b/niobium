@@ -7,7 +7,7 @@ services:
 
 before_install:
   - docker network create grid
-  - docker run -d -p 8045:80 -v $(pwd)/tests/html:/usr/share/nginx/html:ro -p 8045:80 --hostname website --net grid nginx 
+  - docker run -d -v $(pwd)/tests/html:/usr/share/nginx/html:ro --hostname website --net grid nginx 
   - docker run -d -p 4444:4444 -v /dev/shm:/dev/shm --net grid selenium/standalone-chrome:3.141.59-selenium
   - sh wait_for_grid.sh
   
