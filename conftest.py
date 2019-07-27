@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-import niobium
+import niobium  # noqa: F401
 
 
 def pytest_addoption(parser):
