@@ -30,5 +30,5 @@ script:
   - if [ "${TOX_ENV}" == py37 ]; then
       flake8 . ;
   fi
-  tox -e $TOX_ENV
+  - tox -e $TOX_ENV
 
