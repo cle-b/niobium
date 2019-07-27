@@ -18,7 +18,7 @@ def test_find_match_template_zero():
 
 def test_find_match_template_one():
     img_src = cv2.imread(os.path.join(img_dir, "html/browsers.png"))
-    img_template = cv2.imread(os.path.join(img_dir, "html/browser1.png"))
+    img_template = cv2.imread(os.path.join(img_dir, "html/browser_edge.png"))
     res = match_template(img_src, img_template)
     assert len(res) == 1
     assert (150, 27) == res[0]
@@ -26,7 +26,7 @@ def test_find_match_template_one():
 
 def test_find_match_template_three():
     img_src = cv2.imread(os.path.join(img_dir, "html/browsers.png"))
-    img_template = cv2.imread(os.path.join(img_dir, "html/browser3.png"))
+    img_template = cv2.imread(os.path.join(img_dir, "html/browser_firefox.png"))
     res = match_template(img_src, img_template)
     assert len(res) == 3
     assert (321, 21) in res
@@ -36,7 +36,7 @@ def test_find_match_template_three():
 
 def test_find_match_template_threshold():
     img_src = cv2.imread(os.path.join(img_dir, "html/browsers.png"))
-    img_template = cv2.imread(os.path.join(img_dir, "html/browser2.png"))
+    img_template = cv2.imread(os.path.join(img_dir, "html/browser_edge_degraded.png"))
     res = match_template(img_src, img_template)
     assert len(res) == 0
     res = match_template(img_src, img_template, 0.8)
