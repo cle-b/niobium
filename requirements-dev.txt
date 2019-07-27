@@ -5,3 +5,4 @@ pre-commit
 pytest-selenium
 coverage
 tox
+codecov

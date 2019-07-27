@@ -31,3 +31,6 @@ script:
     flake8 . ;
   fi  
 - tox -e $TOX_ENV
+
+after_success:
+- codecov
