@@ -18,7 +18,7 @@ setuptools.setup(
     url="https://github.com/cle-b/niobium",
     packages=setuptools.find_packages(),
     python_requires=">=3.4",
-    install_requires=["selenium"],
+    install_requires=["selenium", "opencv-python", "pillow"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache Software License",
