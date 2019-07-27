@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 def test_find_element_by_image_no_element(selenium, website):
     selenium.get(urljoin(website, "/browsers.htm"))
+    assert "website dedicated to nobium tests" in selenium.title
     with pytest.raises(NoSuchElementException):
         selenium.find_element_by_image("tests/html/browser0.png")
 
