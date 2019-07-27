@@ -3,6 +3,7 @@ sudo: required
 language: python
 
 services:
+  - xvfb
   - docker
 
 before_install:
