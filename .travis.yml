@@ -24,11 +24,4 @@ install:
   - pip install -r requirements-dev.txt
 
 script: 
-  - if [ "${TOX_ENV}" == py37 ]; then
-      black --check . --exclude=.tox ;
-  fi
-  - if [ "${TOX_ENV}" == py37 ]; then
-      flake8 . ;
-  fi
   - tox -e $TOX_ENV
-
