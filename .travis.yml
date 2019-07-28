@@ -28,7 +28,7 @@ install:
 
   
 script: 
-- tox -e $TOX_ENV
+- tox -e $TOX_ENV --website http://website/
 
 after_success:
 - codecov
