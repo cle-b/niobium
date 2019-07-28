@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>browsers</title>
+
+    <script>
+    
+    function print_message(message)
+    {
+        document.getElementById("message").innerHTML = message;
+    }
+
+    setTimeout( function(){
+        document.getElementById("browsers").style.visibility="visible";
+    },5000)
+
+    </script>
+</head>
+<body>
+
+    <img id="browsers" src="browsers.png" usemap="#browsersmap" style="visibility: hidden"/>
+
+    <map name="browsersmap">
+        <area shape="rect" coords="0,0,140,140" onclick="print_message('chrome1')"/>
+        <area shape="rect" coords="140,0,280,140" onclick="print_message('edge1')"/>
+        <area shape="rect" coords="300,0,440,140" onclick="print_message('firefox1')"/>
+        <area shape="rect" coords="440,0,580,140" onclick="print_message('safari1')"/>        
+        <area shape="rect" coords="0,140,140,270" onclick="print_message('firefox2')"/>
+        <area shape="rect" coords="140,140,280,270" onclick="print_message('safari2')"/>
+        <area shape="rect" coords="300,140,440,270" onclick="print_message('chrome2')"/>
+        <!-- firefox3 area is reduced around the center of the logo
+             in order to test the click with default position  -->
+        <area shape="rect" coords="510,185,540,215" onclick="print_message('firefox3')"/>
+    </map>
+    
+    <div id="message"></div>
+</body>
+</html>

@@ -18,16 +18,19 @@ class ImageElement(object):
         self.rect = None  # TODO
 
     def click(self, position=None):
-        action = webdriver.common.action_chains.ActionChains(self.parent)
         if position is None:
             position = (
                 self.location[0] + self.size[0] / 2,
                 self.location[1] + self.size[1] / 2,
             )
+
         if isinstance(self.parent, webdriver.remote.webdriver.WebDriver):
+            action = webdriver.common.action_chains.ActionChains(self.parent)
             offset_element = self.__get_element_top_left()
         else:
+            action = webdriver.common.action_chains.ActionChains(self.parent.parent)
             offset_element = self.parent
+
         action.move_to_element_with_offset(offset_element, position[0], position[1])
         action.click()
         action.perform()

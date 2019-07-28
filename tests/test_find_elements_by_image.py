@@ -37,17 +37,3 @@ def test_find_elements_by_image_three_elements_click(selenium, website):
         messages.append(selenium.find_element_by_id("message").text)
     messages.sort()
     assert messages == ["firefox1", "firefox2", "firefox3"], "click on element failed"
-
-
-def test_find_elements_by_image_three_elements_click_scroll(selenium, website):
-    selenium.get(urljoin(website, "/browsers_scroll.htm"))
-    img_browsers = selenium.find_element_by_id("browsers")
-    selenium.execute_script("arguments[0].scrollIntoView();", img_browsers)
-    elements = selenium.find_elements_by_image("tests/html/browser_firefox.png")
-    assert len(elements) == 3
-    messages = []
-    for element in elements:
-        element.click()
-        messages.append(selenium.find_element_by_id("message").text)
-    messages.sort()
-    assert messages == ["firefox1", "firefox2", "firefox3"], "click on element failed"
