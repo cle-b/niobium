@@ -1,13 +1,7 @@
 dist: bionic
 language: python
-sudo: true
-
-addons:
-  firefox: latest
-  chrome: stable
 
 services:
-  - xvfb
   - docker
 
 before_install:
@@ -17,9 +11,6 @@ before_install:
   - docker run -d --net grid --link website -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:3.141.59-selenium
   - docker run -d --net grid --link website -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-firefox:3.141.59-selenium
   - sh wait_for_grid.sh
-  - sudo install_driver/geckodriver.sh latest
-  - sudo install_driver/chromedriver.sh latest
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 &
   
 matrix:
   include:
