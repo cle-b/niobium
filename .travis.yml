@@ -16,7 +16,11 @@ matrix:
   include:
 
     - python: 3.7
-      env: TOX_ENV=py37
+      env: TOX_ENV=py37-remotechrome
+    - python: 3.7
+      env: TOX_ENV=py37-remotefirefox
+    - python: 3.7
+      env: TOX_ENV=flake8    
 
 install:
   - python -m pip install --upgrade pip
@@ -24,12 +28,6 @@ install:
 
   
 script: 
-- if [ "${TOX_ENV}" == py37 ]; then
-    black --check . --exclude=.tox;
-  fi
-- if [ "${TOX_ENV}" == py37 ]; then
-    flake8 . ;
-  fi  
 - tox -e $TOX_ENV
 
 after_success:
