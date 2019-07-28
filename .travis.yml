@@ -1,5 +1,12 @@
 dist: bionic
 language: python
+sudo: true
+
+addons:
+  chrome: stable
+  apt:
+    packages:
+      - chromium-chromedriver
 
 services:
   - xvfb
@@ -23,6 +30,10 @@ install:
   - python -m pip install --upgrade pip
   - pip install -r requirements-dev.txt
 
+before_script:
+  # include ChromeDriver in PATH
+  - ln --symbolic /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
+  
 script: 
 - if [ "${TOX_ENV}" == py37 ]; then
     black --check . --exclude=.tox;
