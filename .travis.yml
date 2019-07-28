@@ -9,12 +9,16 @@ matrix:
 
     - python: 3.7
       env: TOX_ENV=py37-remotechrome WEBSITE=true
+      name: "python 3.7 remote chrome"
     - python: 3.7
       env: TOX_ENV=py37-remotefirefox WEBSITE=true
+      name: "python 3.7 remote firefox"      
     - python: 3.7
       env: TOX_ENV=flake8 WEBSITE=false   
+      name: "flake8 check (linting)"
     - python: 3.7
       env: TOX_ENV=black WEBSITE=false
+      name: "black check (code format)"
 
 before_install:
   - if [ "${WEBSITE}" == true ]; then 
