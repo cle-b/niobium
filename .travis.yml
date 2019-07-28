@@ -21,6 +21,8 @@ matrix:
       env: TOX_ENV=py37-remotefirefox
     - python: 3.7
       env: TOX_ENV=flake8    
+    - python: 3.7
+      env: TOX_ENV=black
 
 install:
   - python -m pip install --upgrade pip
