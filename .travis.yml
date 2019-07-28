@@ -31,10 +31,7 @@ install:
   - pip install -r requirements-dev.txt
 
 before_script:
-  # include ChromeDriver in PATH
-  - mkdir ${HOME}/bindriver
-  - export PATH=${HOME}/bindriver:${PATH}
-  - ln --symbolic /usr/lib/chromium-browser/chromedriver ${HOME}/bindriver/chromedriver
+  - ls /usr/lib/chromium-browser/chromedriver 
   
 script: 
 - if [ "${TOX_ENV}" == py37 ]; then
