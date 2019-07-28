@@ -7,7 +7,7 @@ import niobium  # noqa: F401
 def pytest_addoption(parser):
     parser.addoption(
         "--website",
-        default="http://localhost:8045",
+        default="http://localhost:8878",
         action="store",
         help="website for tests",
     )

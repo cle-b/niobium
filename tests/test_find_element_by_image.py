@@ -11,7 +11,7 @@ def test_find_element_by_image_no_element(selenium, website):
         selenium.find_element_by_image("tests/html/browser0.png")
 
 
-def test_find_element_by_image_one_elements(selenium, website):
+def test_find_element_by_image_one_element(selenium, website):
     selenium.get(urljoin(website, "/browsers.htm"))
     selenium.find_element_by_image("tests/html/browser_edge.png")
 
