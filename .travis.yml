@@ -17,7 +17,7 @@ matrix:
       env: TOX_ENV=black WEBSITE=false
 
 before_install:
-  - if ! [ "${WEBSITE}" = true ]; then 
+  - if [ "${WEBSITE}" = true ]; then 
       docker network create grid;
       docker run -d --name website -v $(pwd)/tests/html:/usr/share/nginx/html:ro --hostname website --net grid nginx;
       docker run -d -p 4444:4444 --net grid --name selenium-hub selenium/hub:3.141.59-selenium;
