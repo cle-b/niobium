@@ -32,7 +32,7 @@ install:
 
 before_script:
   # include ChromeDriver in PATH
-  - ln --symbolic /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
+  - ln --symbolic /usr/lib/chromium-browser/chromedriver chromedriver
   
 script: 
 - if [ "${TOX_ENV}" == py37 ]; then
