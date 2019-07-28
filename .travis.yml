@@ -19,6 +19,7 @@ before_install:
   - sh wait_for_grid.sh
   - sudo install_driver/geckodriver.sh latest
   - sudo install_driver/chromedriver.sh latest
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 &
   
 matrix:
   include:
