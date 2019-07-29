@@ -4,12 +4,12 @@ import setuptools
 
 with open("README.md", "r") as fh:
     desc = fh.read()
-    title_index = desc.find("# niobium")
+    title_index = desc.find("# Niobium")
     long_description = desc[title_index:]  # remove bagde
 
 setuptools.setup(
     name="niobium",
-    version="0.1.0",
+    version="0.1.1",
     author="cle-b",
     author_email="cle@tictac.pm",
     description="Niobium extends the Python Selenium client with nice features",
