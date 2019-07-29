@@ -9,15 +9,15 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="niobium",
-    version="0.0.1",
+    version="0.1.0",
     author="cle-b",
     author_email="cle@tictac.pm",
-    description="Niobium extends Selenium for simplify web automation",
+    description="Niobium extends the Python Selenium client with nice features",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cle-b/niobium",
     packages=setuptools.find_packages(),
-    python_requires=">=3.4",
+    python_requires=">=3.7",
     install_requires=["selenium", "opencv-python", "pillow"],
     classifiers=[
         "Programming Language :: Python :: 3",
