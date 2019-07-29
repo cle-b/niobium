@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
 
 from .find_image import find_element_by_image, find_elements_by_image
 
@@ -13,12 +12,6 @@ def patch_image():
 
     if "find_elements_by_image" not in dir(WebDriver):
         WebDriver.find_elements_by_image = find_elements_by_image
-
-    if "find_element_by_image" not in dir(WebElement):
-        WebElement.find_element_by_image = find_element_by_image
-
-    if "find_elements_by_image" not in dir(WebElement):
-        WebElement.find_elements_by_image = find_elements_by_image
 
 
 def patch_timeout():

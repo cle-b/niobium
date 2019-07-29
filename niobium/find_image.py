@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-import cv2
 import io
+
+import cv2
 import numpy as np
 from PIL import Image
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
 
 from .image_element import ImageElement
 from .timeout import ImplicitWait
@@ -31,32 +30,40 @@ def match_template(img_src, img_template, threshold=0.9):
         return []
 
 
-def __get_screenshot(parent):
-    if isinstance(parent, WebDriver):
-        return parent.get_screenshot_as_png()
-    elif isinstance(parent, WebElement):
-        return parent.screenshot_as_png
-    else:
-        raise TypeError("parent type shall be WebDriver or WebElement")
-
-
 def find_elements_by_image(self, filename):
+    """
+    Locate all the occurence of an image in the webpage.
 
+    :Args:
+        - filename: The path to the image to search (image shall be in PNG format).
+
+    Returns:
+        A list of ImageElement.
+    """
     template = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
     template_height, template_width, _ = template.shape
 
-    webpage_png = __get_screenshot(self)
+    webpage_png = self.get_screenshot_as_png()
     webpage_img = Image.open(io.BytesIO(webpage_png))
     webpage = np.asarray(webpage_img, dtype=np.float32).astype(np.uint8)
     webpage = cv2.cvtColor(webpage, cv2.COLOR_BGR2RGB)
 
     return [
-        ImageElement(self, loc, (template_width, template_height))
+        ImageElement(self, loc[0], loc[1], template_width, template_height)
         for loc in match_template(webpage, template)
     ]
 
 
 def find_element_by_image(self, filename):
+    """
+    Locate an image in the webpage.
+
+    :Args:
+        - filename: The path to the image to search (image shall be in PNG format).
+
+    Returns:
+        An ImageElement.
+    """
     implicit_wait = ImplicitWait()
     implicit_wait.start()
 
