@@ -1,0 +1,13 @@
+site_name: Niobium
+site_description: Niobium extends the Python Selenium client with nice features.
+site_author: cle-b
+repo_url: https://github.com/cle-b/niobium
+
+nav:
+    - Niobium: index.md
+    - Find Element by Image: image.md
+
+theme: readthedocs
+
+
+
