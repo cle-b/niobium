@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>elements</title>
+
+    <script>
+    
+    function print_message(message)
+    {
+        document.getElementById("message").innerHTML = message;
+    }
+
+    </script>
+</head>
+<body>   
+    <!-- Thanks to alrra for the images https://github.com/alrra/browser-logos -->
+ 
+    <img id="firefox" src="firefox_256x256.png" onclick="print_message('firefox')" onmouseover="print_message('overfirefox')"/>
+    <img id="beta" src="firefox-beta_256x256.png" onclick="print_message('beta')" onmouseover="print_message('overbeta')"/>
+    <br>
+    <img id="developer" src="firefox-developer-edition_256x256.png" onclick="print_message('developer')" onmouseover="print_message('overdeveloper')"/>
+    <img id="lite" src="firefox-lite_256x256.png" onclick="print_message('lite')" onmouseover="print_message('overlite')"/>
+    
+    <div id="message"></div>
+</body>
+</html>

@@ -6,7 +6,7 @@ Niobium extends the Python Selenium client with nice features.
 
 Selenium is probably the better tool for web automation. But sometimes it's hard to write a clean automation script. 
 
-With Niobium you can keep using Selenium and simplify your scripts. For example, Niobium add a new element locator, find_element_by_image, which add image recognition capacity in order to find an element in the webpage.
+With Niobium you can keep using Selenium and simplify your scripts. For example, Niobium adds a new element locator, find_element_by_image, which adds image recognition capacity in order to find an element in the webpage.
 
 The goal of Niobium is not to replace Selenium. We only want to add to Selenium the functions we will love to see in Selenium natively.
 
@@ -51,10 +51,10 @@ or simply disable the warning, like in this example for flake8
     driver = webdriver.Firefox()
     ...
 
-If you use pytest and especially pytest-selenium, just import niobium in your conftest.py.
+If you use *pytest* and especially *pytest-selenium*, just import niobium in your `conftest.py`.
 
 ## Warnings
 
-Some features implemented in Niobium are here only to help you when there is no other easy solution. If you do a bad usage of Niobium features, it can result to a bad perform in your script, or it will be difficult to maintain it. Please read the documentation in order to know the special warnings for the use of these features.
+Some features implemented in Niobium are here only to help you when there is no other easy solution. If you do a bad usage of Niobium features, it can result to a bad performance in your script, or it will be difficult to maintain it. Please read the documentation in order to know the special warnings for the use of these features.
 
-Niobium do not modify the Selenium library. The patches are only applied at runtime.
+Niobium do not modify the Selenium library package. The patches are only applied at runtime.

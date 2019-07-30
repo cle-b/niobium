@@ -6,11 +6,11 @@ Niobium adds computer vision to Selenium.
 
 You can locate an image in the page using the following method:
 
-    find_element_by_image
+    find_element_by_image(filename)
 
 And to find multiple images (this method returns a list)
 
-    find_elements_by_image
+    find_elements_by_image(filename)
 
 These methods have the same behavior than the classic find_element methods but they return an ImageElement instead of a WebElement.
 
@@ -32,22 +32,30 @@ The methods find_element_by_image and find_elements_by_image are available only 
 
     driver.quit()
 
-## Move the mouse over the image
-
-You can move the cursor to the element.
-
-    driver.find_element_by_image("logo_python.png").move_to()
-
-By default, the cursor is move to the center of the element but you can choose a specific location for the cursor.
-
-    driver.find_element_by_image("logo_python.png").move_to(100, 100)
-
 ## Click on the image
 
 You can click on the element.
 
     driver.find_element_by_image("logo_python.png").click()
 
-By default, the click is perform on the center of the element but you can choose a specific location for the click. It can be inside or outside the element.
+By default, the click is performed on the center of the element.
 
-    driver.find_element_by_image("logo_python.png").click(-10, -10)
+## Click with offset
+
+You can click to a specific location related to the top left corner of the element with the `click_at(xoffset, yoffset)` function.
+
+    driver.find_element_by_image("logo_python.png").click_at(100, -100) 
+
+## Move the cursor over the element
+
+You can move the cursor to the center of the element with the `move_to()` function.
+
+    driver.find_element_by_image("logo_python.png").move_to()
+
+## Move the cursor with offset
+
+You can move the cursor to a specific location related to the top left corner of the element with the `move_at(xoffset, yoffset)` function.
+
+    driver.find_element_by_image("logo_python.png").move_at(20, 20)
+
+

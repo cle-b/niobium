@@ -39,31 +39,37 @@ class ImageElement(object):
         """A dictionary with the size and location of the element."""
         return self._rect
 
-    def move_to(self, xoffset=None, yoffset=None):
+    def move_to(self):
+        """
+        Move the mouse to the center of the specified element.
+        """
+        self.__move_and_click(None, None, False)
+
+    def move_at(self, xoffset, yoffset):
         """
         Move the mouse by an offset of the specified element.
            Offsets are relative to the top-left corner of the element.
 
         :Args:
-         - to_element: The WebElement to move to.
          - xoffset: X offset to move to.
-           If None, X offset is on the middle of the element.
          - yoffset: Y offset to move to.
-           If None, Y offset is on the middle of the element.
         """
         self.__move_and_click(xoffset, yoffset, False)
 
-    def click(self, xoffset=None, yoffset=None):
+    def click(self):
+        """
+        Move the mouse to the center of the specified element and click.
+        """
+        self.__move_and_click(None, None, True)
+
+    def click_at(self, xoffset, yoffset):
         """
         Move the mouse by an offset of the specified element and click.
            Offsets are relative to the top-left corner of the element.
 
         :Args:
-         - to_element: The WebElement to move to.
          - xoffset: X offset to move to.
-           If None, X offset is on the middle of the element.
          - yoffset: Y offset to move to.
-           If None, Y offset is on the middle of the element.
         """
         self.__move_and_click(xoffset, yoffset, True)
 

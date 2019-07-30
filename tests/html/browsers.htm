@@ -20,12 +20,12 @@
     <img src="browsers.png" usemap="#browsersmap"/>
 
     <map name="browsersmap">
-        <area shape="rect" coords="0,0,140,140" onclick="print_message('chrome1')"/>
-        <area shape="rect" coords="140,0,280,140" onclick="print_message('edge1')" onmouseover="print_message('overedge1')"/>
+        <area id="chrome1" shape="rect" coords="0,0,140,140" onclick="print_message('chrome1')"/>
+        <area id="edge1" shape="rect" coords="140,0,280,140" onclick="print_message('edge1')" onmouseover="print_message('overedge1')"/>
         <area shape="rect" coords="300,0,440,140" onclick="print_message('firefox1')"/>
         <area shape="rect" coords="440,0,580,140" onclick="print_message('safari1')"/>        
-        <area shape="rect" coords="0,140,140,270" onclick="print_message('firefox2')"/>
-        <area shape="rect" coords="140,140,280,270" onclick="print_message('safari2')" />
+        <area id="firefox2" shape="rect" coords="0,140,140,270" onclick="print_message('firefox2')"/>
+        <area id="chrome2" shape="rect" coords="140,140,280,270" onclick="print_message('safari2')" />
         <area shape="rect" coords="300,140,440,270" onclick="print_message('chrome2')" onmouseover="print_message('overchrome2')"/>
         <!-- firefox3 area is reduced around the center of the logo
              in order to test the click with default position  -->
