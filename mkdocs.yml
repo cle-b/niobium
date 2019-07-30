@@ -6,6 +6,7 @@ repo_url: https://github.com/cle-b/niobium
 nav:
     - Niobium: index.md
     - Find Element by Image: image.md
+    - WebElement new actions: webelement_action.md
 
 theme: readthedocs
 
