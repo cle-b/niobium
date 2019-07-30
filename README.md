@@ -1,4 +1,4 @@
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black) [![Build Status](https://travis-ci.org/cle-b/niobium.svg?branch=master)](https://travis-ci.org/cle-b/niobium) 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black) [![Build Status](https://travis-ci.org/cle-b/niobium.svg?branch=master)](https://travis-ci.org/cle-b/niobium) [![Documentation Status](https://readthedocs.org/projects/niobium/badge/?version=latest)](https://niobium.readthedocs.io/en/latest/?badge=latest) [![PyPI version](https://badge.fury.io/py/niobium.svg)](https://badge.fury.io/py/niobium) 
 
 # Niobium
 
