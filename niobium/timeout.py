@@ -24,3 +24,16 @@ _real_implicitly_wait = webdriver.remote.webdriver.WebDriver.implicitly_wait
 def _patch_implicitly_wait(self, time_to_wait):
     ImplicitWait.time_to_wait = time_to_wait
     return _real_implicitly_wait(self, time_to_wait)
+
+
+class ExplicitWait(object):
+    def __init__(self, time_to_wait):
+        self.start_time = None
+        self.time_to_wait = time_to_wait
+
+    def start(self):
+        self.start_time = time.time()
+
+    @property
+    def max_time_exceeded(self):
+        return (time.time() - self.start_time) > self.time_to_wait

@@ -7,6 +7,7 @@ nav:
     - Niobium: index.md
     - Find Element by Image: image.md
     - WebElement new actions: webelement_action.md
+    - WebElement wait expected conditions: webelement_wait.md
 
 theme: readthedocs
 

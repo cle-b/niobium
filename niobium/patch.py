@@ -8,6 +8,8 @@ from .timeout import _patch_implicitly_wait
 
 from .webelement_action import click_at, move_to, move_at
 
+from .webelement_wait import wait
+
 
 def patch_image():
     if "find_element_by_image" not in dir(WebDriver):
@@ -30,3 +32,8 @@ def patch_webelement_action():
 
     if "move_at" not in dir(WebElement):
         WebElement.move_at = move_at
+
+
+def patch_webelement_wait():
+    if "wait" not in dir(WebElement):
+        WebElement.wait = wait

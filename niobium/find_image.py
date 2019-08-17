@@ -37,7 +37,7 @@ def find_elements_by_image(self, filename):
     :Args:
         - filename: The path to the image to search (image shall be in PNG format).
 
-    Returns:
+    :Returns:
         A list of ImageElement.
     """
     template = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
@@ -61,8 +61,11 @@ def find_element_by_image(self, filename):
     :Args:
         - filename: The path to the image to search (image shall be in PNG format).
 
-    Returns:
+    :Returns:
         An ImageElement.
+
+    :Raises:
+        - NoSuchElementException - if the element wasn't found
     """
     implicit_wait = ImplicitWait()
     implicit_wait.start()
