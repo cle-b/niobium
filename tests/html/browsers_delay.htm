@@ -15,6 +15,9 @@
 
     setTimeout( function(){
         document.getElementById("browsers").style.visibility="visible";
+        document.getElementById("button_displayed_enabled").style.visibility="visible";
+        document.getElementById("button_displayed_enabled").disabled=false;
+        document.getElementById("button_displayed_disabled").style.visibility="visible";
     },5000)
 
     </script>
@@ -35,7 +38,12 @@
              in order to test the click with default position  -->
         <area shape="rect" coords="510,185,540,215" onclick="print_message('firefox3')"/>
     </map>
-    
+
+    <button id="button_displayed_enabled" disabled="True" style="visibility: hidden" onclick="print_message('button_displayed_enabled')">displayed and enabled</button>
+    <button id="button_displayed_disabled" disabled="True" style="visibility: hidden" onclick="print_message('button_displayed_disabled')">displayed and disabled</button>
+    <button id="button_always_displayed_enabled" onclick="print_message('button_always_displayed_enabled')">displayed and disabled</button>
+    <button id="button_always_hidden_disabled" disabled="True" style="visibility: hidden"  onclick="print_message('button_always_hidden_disabled')">displayed and disabled</button>
+        
     <div id="message"></div>
 </body>
 </html>

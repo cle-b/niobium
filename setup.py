@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="niobium",
-    version="0.2.0",
+    version="0.3.0",
     author="cle-b",
     author_email="cle@tictac.pm",
     description="Niobium extends the Python Selenium client with nice features",
