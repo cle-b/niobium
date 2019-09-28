@@ -11,32 +11,38 @@ matrix:
       name: "python 3.6 remote chrome"
     - python: 3.6
       env: TOX_ENV=py36-remotefirefox WEBSITE=true
-      name: "python 3.6 remote firefox"      
+      name: "python 3.6 remote firefox"
     - python: 3.7
       env: TOX_ENV=py37-remotechrome WEBSITE=true
       name: "python 3.7 remote chrome"
     - python: 3.7
       env: TOX_ENV=py37-remotefirefox WEBSITE=true
-      name: "python 3.7 remote firefox"      
+      name: "python 3.7 remote firefox"
+    - python: 3.8
+      env: TOX_ENV=py38-remotechrome WEBSITE=true
+      name: "python 3.8 remote chrome"
+    - python: 3.8
+      env: TOX_ENV=py38-remotefirefox WEBSITE=true
+      name: "python 3.8 remote firefox"
     - python: 3.7
-      env: TOX_ENV=flake8 WEBSITE=false   
+      env: TOX_ENV=flake8 WEBSITE=false
       name: "flake8 check (linting)"
     - python: 3.7
       env: TOX_ENV=black WEBSITE=false
       name: "black check (code format)"
 
 before_install:
-  - if [ "${WEBSITE}" == true ]; then 
-      sh run_selenium_grid.sh; 
+  - if [ "${WEBSITE}" == true ]; then
+      sh run_selenium_grid.sh;
     fi
 
-  
+
 install:
   - python -m pip install --upgrade pip
   - pip install -r requirements-dev.txt
 
-  
-script: 
+
+script:
 - tox -e $TOX_ENV -- --website http://website/
 
 after_success:
