@@ -6,7 +6,12 @@ services:
 
 matrix:
   include:
-
+    - python: 3.6
+      env: TOX_ENV=py36-remotechrome WEBSITE=true
+      name: "python 3.6 remote chrome"
+    - python: 3.6
+      env: TOX_ENV=py36-remotefirefox WEBSITE=true
+      name: "python 3.6 remote firefox"      
     - python: 3.7
       env: TOX_ENV=py37-remotechrome WEBSITE=true
       name: "python 3.7 remote chrome"
