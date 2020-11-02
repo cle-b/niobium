@@ -24,6 +24,12 @@ matrix:
     - python: 3.8
       env: TOX_ENV=py38-remotefirefox WEBSITE=true
       name: "python 3.8 remote firefox"
+    - python: 3.9
+      env: TOX_ENV=py39-remotechrome WEBSITE=true
+      name: "python 3.9 remote chrome"
+    - python: 3.9
+      env: TOX_ENV=py39-remotefirefox WEBSITE=true
+      name: "python 3.9 remote firefox"
     - python: 3.7
       env: TOX_ENV=flake8 WEBSITE=false
       name: "flake8 check (linting)"
