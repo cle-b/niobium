@@ -1,21 +1,21 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common import by
 
-from .find_image import find_element_by_image, find_elements_by_image
-
-from .timeout import _patch_implicitly_wait
-
-from .webelement_action import click_at, move_to, move_at
-
-from .webelement_wait import wait
+from niobium.find_image import By as NiobiumBy
+from niobium.find_image import find_element
+from niobium.find_image import find_elements
+from niobium.timeout import _patch_implicitly_wait
+from niobium.webelement_action import click_at, move_to, move_at
+from niobium.webelement_wait import wait
 
 
 def patch_image():
-    if "find_element_by_image" not in dir(WebDriver):
-        WebDriver.find_element_by_image = find_element_by_image
 
-    if "find_elements_by_image" not in dir(WebDriver):
-        WebDriver.find_elements_by_image = find_elements_by_image
+    by.By = NiobiumBy
+
+    WebDriver.find_element = find_element
+    WebDriver.find_elements = find_elements
 
 
 def patch_timeout():

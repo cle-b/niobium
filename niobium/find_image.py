@@ -1,14 +1,27 @@
 import io
+from typing import Optional
+from typing import Union
+
 
 import cv2
 import numpy as np
 from PIL import Image
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.common.by import By as OriginalBy
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 
-from .image_element import ImageElement
-from .timeout import ImplicitWait
+
+from niobium.image_element import ImageElement
+from niobium.timeout import ImplicitWait
+
+original_webdriver_find_element = WebDriver.find_element
+original_webdriver_find_elements = WebDriver.find_elements
+
+
+class By(OriginalBy):
+    IMAGE = "image"
 
 
 def match_template(img_src, img_template, threshold=0.9):
@@ -31,7 +44,7 @@ def match_template(img_src, img_template, threshold=0.9):
         return []
 
 
-def find_elements_by_image(self: WebDriver, filename: str):
+def find_elements_by_image(self: WebDriver, filename: str) -> list[ImageElement]:
     """
     Locate all the occurence of an image in the webpage.
 
@@ -57,7 +70,7 @@ def find_elements_by_image(self: WebDriver, filename: str):
     ]
 
 
-def find_element_by_image(self: WebDriver, filename: str):
+def find_element_by_image(self: WebDriver, filename: str) -> ImageElement:
     """
     Locate an image in the webpage.
 
@@ -84,3 +97,21 @@ def find_element_by_image(self: WebDriver, filename: str):
         )
     else:
         return elements[0]
+
+
+def find_element(
+    self: WebDriver, by=By.ID, value: Optional[str] = None
+) -> Union[WebElement, ImageElement]:
+    if by == By.IMAGE and value is not None:
+        return find_element_by_image(self, value)
+    else:
+        return original_webdriver_find_element(self, by, value)
+
+
+def find_elements(
+    self: WebDriver, by=By.ID, value: Optional[str] = None
+) -> Union[list[WebElement], list[ImageElement]]:
+    if by == By.IMAGE and value is not None:
+        return find_elements_by_image(self, value)
+    else:
+        return original_webdriver_find_elements(self, by, value)
