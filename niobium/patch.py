@@ -10,8 +10,11 @@ from niobium.webelement_wait import wait
 
 def patch_image():
 
-    WebDriver.find_image = find_image
-    WebDriver.find_images = find_images
+    if not hasattr(WebDriver, "find_image"):
+        WebDriver.find_image = find_image
+
+    if not hasattr(WebDriver, "find_images"):
+        WebDriver.find_images = find_images
 
 
 def patch_timeout():
@@ -19,16 +22,17 @@ def patch_timeout():
 
 
 def patch_webelement_action():
-    if "click_at" not in dir(WebElement):
+
+    if not hasattr(WebElement, "click_at"):
         WebElement.click_at = click_at
 
-    if "move_to" not in dir(WebElement):
+    if not hasattr(WebElement, "move_to"):
         WebElement.move_to = move_to
 
-    if "move_at" not in dir(WebElement):
+    if not hasattr(WebElement, "move_at"):
         WebElement.move_at = move_at
 
 
 def patch_webelement_wait():
-    if "wait" not in dir(WebElement):
+    if not hasattr(WebElement, "wait"):
         WebElement.wait = wait
