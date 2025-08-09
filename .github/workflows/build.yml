@@ -1,0 +1,103 @@
+name: Build
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+    - name: Linter and code format verification
+      run: |
+        pip install -r requirements-dev.txt
+        make check        
+    - name: Test Firefox/Ubuntu
+      run: |
+        make firefox
+        make testfirefox
+
+  testpythonversion:
+    name: Test Python version
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:        
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Run tests with Firefox
+      run: |
+        make firefox
+        make testfirefox
+      env:
+        PIP_USE_PEP517: 1   
+
+  testbrowseros:
+    name: Test another browser and others OS
+    needs: testpythonversion
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Run tests with Chrome
+      run: |
+        make chrome
+        make testchrome
+      env:
+        PIP_USE_PEP517: 1   
+
+
+  deploy:
+    name: Deploy on PyPI
+    needs: testospython
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing 
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+    - name: Install pypa/build
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade setuptools wheel
+        python -m pip install build --user
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+    - name: Store the distribution packages
+      if: >
+        github.event_name == 'push' &&
+        startsWith(github.ref, 'refs/tags') &&
+        github.actor == github.repository_owner
+      uses: actions/upload-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish package on Pypi
+      if: >
+        github.event_name == 'push' &&
+        startsWith(github.ref, 'refs/tags') &&
+        github.actor == github.repository_owner
+      uses: pypa/gh-action-pypi-publish@release/v1
