@@ -29,11 +29,11 @@ def test_webelement_move_at(selenium, website):
     assert (
         selenium.find_element(By.ID, "message").text == "overfirefox"
     ), "click on element failed"
-    selenium.find_element(By.ID, "firefox").move_at(400, 400)
+    selenium.find_element(By.ID, "lite").move_at(100, -300)
+    assert (
+        selenium.find_element(By.ID, "message").text == "overbeta"
+    ), "click on element failed"
+    selenium.find_element(By.ID, "developer").move_at(300, 10)
     assert (
         selenium.find_element(By.ID, "message").text == "overlite"
-    ), "click on element failed"
-    selenium.find_element(By.ID, "developer").move_at(100, -300)
-    assert (
-        selenium.find_element(By.ID, "message").text == "overfirefox"
     ), "click on element failed"
