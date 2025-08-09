@@ -4,9 +4,9 @@ Niobium extends the Python Selenium client with nice features.
 
 ## Why Niobium
 
-Selenium is probably the better tool for web automation. But sometimes it's hard to write a clean automation script. 
+Selenium is a good tool for web automation, but sometimes it’s hard to write a clean automation script.
 
-With Niobium you can keep using Selenium and simplify your scripts. For example, Niobium adds a new element locator, find_element_by_image, which adds image recognition capacity in order to find an element in the webpage.
+With Niobium, you can keep using Selenium while simplifying your scripts. For example, Niobium adds a new element locator,` By.IMAGE`, which enables image recognition in `WebDriver.find_element` to locate an element on the webpage.
 
 The goal of Niobium is not to replace Selenium. We only want to add to Selenium the functions we will love to see in Selenium natively.
 
@@ -22,6 +22,7 @@ Niobium is available on Pypi, so simply use pip.
 
 In order to use Niobium, you just need to import it in your script. Selenium will be automatically extended. 
 
+```python
     from selenium import webdriver
     import niobium
 
@@ -29,24 +30,29 @@ In order to use Niobium, you just need to import it in your script. Selenium wil
     driver.implicitly_wait(10)
     driver.get("https://www.python.org/")
    
-    driver.find_element(By.IMAGE,"logo_python.png")
+    driver.find_element(By.IMAGE, "logo_python.png")
 
     driver.quit()
+```
 
 In order to avoid warning with your linter, you can import selenium from niobium.
 
+```python
     from niobium import selenium
 
     driver = selenium.webdriver.Firefox()
     ...
+```
 
 or simply disable the warning, like in this example for flake8
 
+```python
     from selenium import webdriver
     import niobium  # noqa: F401
 
     driver = webdriver.Firefox()
     ...
+```
 
 If you use *pytest* and especially *pytest-selenium*, just import niobium in your `conftest.py`.
 
