@@ -18,13 +18,13 @@ jobs:
         make setup
         pip install -r requirements-dev.txt
         make check        
-    - name: Run tests with chrome
+    - name: Run tests with Chrome
       run: |
         make chrome
         make testchrome
 
   testpythonversion:
-    name: Test Python version with Firefox on Ubuntu
+    name: Test Pythons on Ubuntu
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 15
