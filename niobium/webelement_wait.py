@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import time
 
 from selenium.common.exceptions import (
@@ -6,11 +5,14 @@ from selenium.common.exceptions import (
     ElementNotInteractableException,
     NoSuchElementException,
 )
+from selenium.webdriver.remote.webelement import WebElement
 
 from .timeout import ImplicitWait, ExplicitWait
 
 
-def wait(self, displayed=True, enabled=True, timeout=None):
+def wait(
+    self: WebElement, displayed: bool = True, enabled: bool = True, timeout: bool = None
+):
     """
     Wait until expected conditions.
 

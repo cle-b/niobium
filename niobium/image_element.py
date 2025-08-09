@@ -1,9 +1,14 @@
-# -*- coding: utf-8 -*-
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
+from typing import Dict
+from typing import Union
 
 
 class ImageElement(object):
-    def __init__(self, parent, x, y, width, height):
+    def __init__(
+        self, parent: WebDriver, x: int, y: int, width: int, height: int
+    ) -> None:
         """
         Create a new ImageElement.
 
@@ -20,32 +25,32 @@ class ImageElement(object):
         self._rect = {"x": x, "y": y, "width": width, "height": height}
 
     @property
-    def parent(self):
+    def parent(self) -> WebDriver:
         """Internal reference to the WebDriver instance this element was found from."""
         return self._parent
 
     @property
-    def location(self):
+    def location(self) -> Dict[str, int]:
         """The location of the element in the renderable canvas."""
         return self._location
 
     @property
-    def size(self):
+    def size(self) -> Dict[str, int]:
         """The size of the element."""
         return self._size
 
     @property
-    def rect(self):
+    def rect(self) -> Dict[str, int]:
         """A dictionary with the size and location of the element."""
         return self._rect
 
-    def move_to(self):
+    def move_to(self) -> None:
         """
         Move the mouse to the center of the specified element.
         """
         self.__move_and_click(None, None, False)
 
-    def move_at(self, xoffset, yoffset):
+    def move_at(self, xoffset: int, yoffset: int) -> None:
         """
         Move the mouse by an offset of the specified element.
            Offsets are relative to the top-left corner of the element.
@@ -56,13 +61,13 @@ class ImageElement(object):
         """
         self.__move_and_click(xoffset, yoffset, False)
 
-    def click(self):
+    def click(self) -> None:
         """
         Move the mouse to the center of the specified element and click.
         """
         self.__move_and_click(None, None, True)
 
-    def click_at(self, xoffset, yoffset):
+    def click_at(self, xoffset: int, yoffset: int) -> None:
         """
         Move the mouse by an offset of the specified element and click.
            Offsets are relative to the top-left corner of the element.
@@ -73,14 +78,19 @@ class ImageElement(object):
         """
         self.__move_and_click(xoffset, yoffset, True)
 
-    def __move_and_click(self, xoffset=None, yoffset=None, click=False):
+    def __move_and_click(
+        self,
+        xoffset: Union[int, None] = None,
+        yoffset: Union[int, None] = None,
+        click: bool = False,
+    ) -> None:
         if xoffset is None:
-            xoffset = self.location["x"] + self.size["width"] / 2
+            xoffset = self.location["x"] + int(self.size["width"] / 2)
         else:
             xoffset = self.location["x"] + xoffset
 
         if yoffset is None:
-            yoffset = self.location["y"] + self.size["height"] / 2
+            yoffset = self.location["y"] + int(self.size["height"] / 2)
         else:
             yoffset = self.location["y"] + yoffset
 
@@ -110,4 +120,4 @@ class ImageElement(object):
         }
         """
         self.parent.execute_script(javacript_create_topleft_element)
-        return self.parent.find_element_by_id("niobium-topleft-elt")
+        return self.parent.find_element(By.ID, "niobium-topleft-elt")

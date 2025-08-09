@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
 import time
 
 from selenium import webdriver
+from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class ImplicitWait(object):
-    time_to_wait = 0
+    time_to_wait: float = 0
 
     def __init__(self):
         self.start_time = None
@@ -21,7 +21,7 @@ class ImplicitWait(object):
 _real_implicitly_wait = webdriver.remote.webdriver.WebDriver.implicitly_wait
 
 
-def _patch_implicitly_wait(self, time_to_wait):
+def _patch_implicitly_wait(self: WebDriver, time_to_wait: float):
     ImplicitWait.time_to_wait = time_to_wait
     return _real_implicitly_wait(self, time_to_wait)
 

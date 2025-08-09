@@ -1,5 +1,3 @@
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black) [![Build Status](https://travis-ci.org/cle-b/niobium.svg?branch=master)](https://travis-ci.org/cle-b/niobium) [![Documentation Status](https://readthedocs.org/projects/niobium/badge/?version=latest)](https://niobium.readthedocs.io/en/latest/?badge=latest) [![PyPI version](https://badge.fury.io/py/niobium.svg)](https://badge.fury.io/py/niobium) 
-
 # Niobium
 
 Niobium extends the Python Selenium client with nice features.
@@ -24,7 +22,6 @@ Niobium is available on Pypi, so simply use pip.
 
 In order to use Niobium, you just need to import it in your script. Selenium will be automatically extended. 
 
-    # -*- coding: utf-8 -*-
     from selenium import webdriver
     import niobium
 
@@ -38,7 +35,6 @@ In order to use Niobium, you just need to import it in your script. Selenium wil
 
 In order to avoid warning with your linter, you can import selenium from niobium.
 
-    # -*- coding: utf-8 -*-
     from niobium import selenium
 
     driver = selenium.webdriver.Firefox()
@@ -46,7 +42,6 @@ In order to avoid warning with your linter, you can import selenium from niobium
 
 or simply disable the warning, like in this example for flake8
 
-    # -*- coding: utf-8 -*-
     from selenium import webdriver
     import niobium  # noqa: F401
 

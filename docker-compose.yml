@@ -1,0 +1,39 @@
+services:
+  website:
+    image: nginx
+    container_name: website
+    ports:
+      - "8878:80"
+    volumes:
+      - ./tests/html:/usr/share/nginx/html:ro
+    networks:
+      - grid
+    hostname: website
+
+  selenium-chrome:
+    image: selenium/standalone-chrome:4.21.0
+    container_name: selenium-chrome
+    ports:
+      - "4444:4444"
+    networks:
+      - grid
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - website      
+
+  selenium-firefox:
+    image: selenium/standalone-firefox:4.21.0
+    container_name: selenium-firefox
+    ports:
+      - "4444:4444"
+    networks:
+      - grid
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - website      
+
+networks:
+  grid:
+    driver: bridge

@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
 from urllib.parse import urljoin
+
+from selenium.webdriver.common.by import By
 
 
 def test_find_elements_by_image_no_element(selenium, website):
@@ -23,7 +24,7 @@ def test_find_elements_by_image_one_element_click(selenium, website):
     assert len(elements) == 1
     elements[0].click()
     assert (
-        selenium.find_element_by_id("message").text == "edge1"
+        selenium.find_element(By.ID, "message").text == "edge1"
     ), "click on element failed"
 
 
@@ -34,6 +35,6 @@ def test_find_elements_by_image_three_elements_click(selenium, website):
     messages = []
     for element in elements:
         element.click()
-        messages.append(selenium.find_element_by_id("message").text)
+        messages.append(selenium.find_element(By.ID, "message").text)
     messages.sort()
     assert messages == ["firefox1", "firefox2", "firefox3"], "click on element failed"
