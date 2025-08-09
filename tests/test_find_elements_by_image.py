@@ -42,7 +42,7 @@ def test_find_elements_by_image_three_elements_click(selenium, website):
 
 def test_find_elements_not_by_image(selenium, website):
     selenium.get(urljoin(website, "/browsers.htm"))
-    for id in ["chrome1","firefox2"]:
+    for id in ["chrome1", "firefox2"]:
         selenium.find_elements(By.ID, id)[0].click()
         assert (
             selenium.find_element(By.ID, "message").text == id
