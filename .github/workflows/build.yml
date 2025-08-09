@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     name: Deploy on PyPI
-    needs: testbrowseros
+    needs: testpythonversion
     runs-on: ubuntu-latest
     environment: release
     permissions:
