@@ -29,7 +29,7 @@ In order to use Niobium, you just need to import it in your script. Selenium wil
     driver.implicitly_wait(10)
     driver.get("https://www.python.org/")
    
-    driver.find_element_by_image("logo_python.png")
+    driver.find_element(By.IMAGE,"logo_python.png")
 
     driver.quit()
 

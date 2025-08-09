@@ -6,11 +6,11 @@ Niobium adds computer vision to Selenium.
 
 You can locate an image in the page using the following method:
 
-    find_element_by_image(filename)
+    find_element(By.IMAGE,filename)
 
 And to find multiple images (this method returns a list)
 
-    find_elements_by_image(filename)
+    find_elements(By.IMAGE,filename)
 
 These methods have the same behavior than the classic find_element methods but they return an ImageElement instead of a WebElement.
 
@@ -27,7 +27,7 @@ The methods find_element_by_image and find_elements_by_image are available only 
     driver.implicitly_wait(10)
     driver.get("https://www.python.org/")
    
-    driver.find_element_by_image("logo_python.png")
+    driver.find_element(By.IMAGE,"logo_python.png")
 
     driver.quit()
 
@@ -35,7 +35,7 @@ The methods find_element_by_image and find_elements_by_image are available only 
 
 You can click on the element.
 
-    driver.find_element_by_image("logo_python.png").click()
+    driver.find_element(By.IMAGE,"logo_python.png").click()
 
 By default, the click is performed on the center of the element.
 
@@ -43,18 +43,18 @@ By default, the click is performed on the center of the element.
 
 You can click to a specific location related to the top left corner of the element with the `click_at(xoffset, yoffset)` function.
 
-    driver.find_element_by_image("logo_python.png").click_at(100, -100) 
+    driver.find_element(By.IMAGE,"logo_python.png").click_at(100, -100) 
 
 ## Move the cursor over the element
 
 You can move the cursor to the center of the element with the `move_to()` function.
 
-    driver.find_element_by_image("logo_python.png").move_to()
+    driver.find_element(By.IMAGE,"logo_python.png").move_to()
 
 ## Move the cursor with offset
 
 You can move the cursor to a specific location related to the top left corner of the element with the `move_at(xoffset, yoffset)` function.
 
-    driver.find_element_by_image("logo_python.png").move_at(20, 20)
+    driver.find_element(By.IMAGE,"logo_python.png").move_at(20, 20)
 
 

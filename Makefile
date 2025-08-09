@@ -20,13 +20,13 @@ typing:
 check: lint typing
 
 firefox:
-	docker compose up -d selenium-firefox
+	docker compose up -d --force-recreate selenium-firefox
 
 testfirefox:	
 	pytest -v tests/ --driver Remote --capability browserName firefox --website http://website/ -x 
 
 chrome:
-	docker compose up -d selenium-chrome
+	docker compose up -d --force-recreate selenium-chrome
 
 testchrome:
 	pytest -v tests/ --driver Remote --capability browserName chrome --website http://website/ -x 

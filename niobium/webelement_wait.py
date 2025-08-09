@@ -7,7 +7,7 @@ from selenium.common.exceptions import (
 )
 from selenium.webdriver.remote.webelement import WebElement
 
-from .timeout import ImplicitWait, ExplicitWait
+from niobium.timeout import ImplicitWait, ExplicitWait
 
 
 def wait(
