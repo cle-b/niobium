@@ -7,13 +7,13 @@ Niobium adds computer vision to Selenium.
 You can locate an image in the page using the following method:
 
 ```python
-    find_image(filename)
+    WebDriver.find_image(filename: str) -> ImageElement
 ```
 
 And to find multiple images (this method returns a list)
 
 ```python
-    find_images(filename)
+    WebDriver.find_images(filename: str) -> list[ImageElement]
 ```
 
 These methods have the same behavior than the classic `find_element` methods but they return an `ImageElement` instead of a `WebElement`.
