@@ -100,7 +100,7 @@ def find_element_by_image(self: WebDriver, filename: str) -> ImageElement:
 
 
 def find_element(
-    self, by=By.ID, value: Optional[str] = None
+    self: WebDriver, by=By.ID, value: Optional[str] = None
 ) -> Union[WebElement, ImageElement]:
     if by == By.IMAGE and value is not None:
         return find_element_by_image(self, value)
@@ -109,7 +109,7 @@ def find_element(
 
 
 def find_elements(
-    self, by=By.ID, value: Optional[str] = None
+    self: WebDriver, by=By.ID, value: Optional[str] = None
 ) -> Union[list[WebElement], list[ImageElement]]:
     if by == By.IMAGE and value is not None:
         return find_elements_by_image(self, value)
