@@ -1,10 +1,8 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.common import by
 
-from niobium.find_image import By as NiobiumBy
-from niobium.find_image import find_element
-from niobium.find_image import find_elements
+from niobium.find_image import find_image
+from niobium.find_image import find_images
 from niobium.timeout import _patch_implicitly_wait
 from niobium.webelement_action import click_at, move_to, move_at
 from niobium.webelement_wait import wait
@@ -12,10 +10,11 @@ from niobium.webelement_wait import wait
 
 def patch_image():
 
-    by.By = NiobiumBy
+    if not hasattr(WebDriver, "find_image"):
+        WebDriver.find_image = find_image
 
-    WebDriver.find_element = find_element
-    WebDriver.find_elements = find_elements
+    if not hasattr(WebDriver, "find_images"):
+        WebDriver.find_images = find_images
 
 
 def patch_timeout():
@@ -23,16 +22,17 @@ def patch_timeout():
 
 
 def patch_webelement_action():
-    if "click_at" not in dir(WebElement):
+
+    if not hasattr(WebElement, "click_at"):
         WebElement.click_at = click_at
 
-    if "move_to" not in dir(WebElement):
+    if not hasattr(WebElement, "move_to"):
         WebElement.move_to = move_to
 
-    if "move_at" not in dir(WebElement):
+    if not hasattr(WebElement, "move_at"):
         WebElement.move_at = move_at
 
 
 def patch_webelement_wait():
-    if "wait" not in dir(WebElement):
+    if not hasattr(WebElement, "wait"):
         WebElement.wait = wait

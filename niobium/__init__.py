@@ -13,4 +13,4 @@ patch_webelement_wait()
 
 __all__ = ["selenium"]
 
-__version__ = "0.5.0"
+__version__ = "1.0.0"
