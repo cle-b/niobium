@@ -20,7 +20,6 @@ They take only one argument which is the path to the PNG image that you search.
 
 The methods find_element_by_image and find_elements_by_image are available only from the WebDriver object. Only the visible page is analyzed in order to locate the image.
 
-    # -*- coding: utf-8 -*-
     from selenium import webdriver
     import niobium # noqa: F401
 

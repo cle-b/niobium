@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
 import io
 
 import cv2
 import numpy as np
 from PIL import Image
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.remote.webdriver import WebDriver
 
 from .image_element import ImageElement
 from .timeout import ImplicitWait
@@ -30,7 +31,7 @@ def match_template(img_src, img_template, threshold=0.9):
         return []
 
 
-def find_elements_by_image(self, filename):
+def find_elements_by_image(self: WebDriver, filename: str):
     """
     Locate all the occurence of an image in the webpage.
 
@@ -41,11 +42,13 @@ def find_elements_by_image(self, filename):
         A list of ImageElement.
     """
     template = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
+    if template is None:
+        raise WebDriverException(f"Unable to read {filename}")
     template_height, template_width, _ = template.shape
 
     webpage_png = self.get_screenshot_as_png()
     webpage_img = Image.open(io.BytesIO(webpage_png))
-    webpage = np.asarray(webpage_img, dtype=np.float32).astype(np.uint8)
+    webpage: np.ndarray = np.asarray(webpage_img, dtype=np.float32).astype(np.uint8)
     webpage = cv2.cvtColor(webpage, cv2.COLOR_BGR2RGB)
 
     return [
@@ -54,7 +57,7 @@ def find_elements_by_image(self, filename):
     ]
 
 
-def find_element_by_image(self, filename):
+def find_element_by_image(self: WebDriver, filename: str):
     """
     Locate an image in the webpage.
 

@@ -22,7 +22,6 @@ Niobium is available on Pypi, so simply use pip.
 
 In order to use Niobium, you just need to import it in your script. Selenium will be automatically extended. 
 
-    # -*- coding: utf-8 -*-
     from selenium import webdriver
     import niobium
 
@@ -36,7 +35,6 @@ In order to use Niobium, you just need to import it in your script. Selenium wil
 
 In order to avoid warning with your linter, you can import selenium from niobium.
 
-    # -*- coding: utf-8 -*-
     from niobium import selenium
 
     driver = selenium.webdriver.Firefox()
@@ -44,7 +42,6 @@ In order to avoid warning with your linter, you can import selenium from niobium
 
 or simply disable the warning, like in this example for flake8
 
-    # -*- coding: utf-8 -*-
     from selenium import webdriver
     import niobium  # noqa: F401
 

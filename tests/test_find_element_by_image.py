@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 from urllib.parse import urljoin
 
 import pytest
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
 
 
 def test_find_element_by_image_no_element(selenium, website):
@@ -26,7 +26,7 @@ def test_find_element_by_image_one_element_click(selenium, website):
     element = selenium.find_element_by_image("tests/html/browser_edge.png")
     element.click()
     assert (
-        selenium.find_element_by_id("message").text == "edge1"
+        selenium.find_element(By.ID, "message").text == "edge1"
     ), "click on element failed"
 
 
@@ -35,7 +35,7 @@ def test_find_element_by_image_one_element_click_at(selenium, website):
     element = selenium.find_element_by_image("tests/html/browser_edge.png")
     element.click_at(-100, 200)
     assert (
-        selenium.find_element_by_id("message").text == "firefox2"
+        selenium.find_element(By.ID, "message").text == "firefox2"
     ), "click on element failed"
 
 
@@ -44,7 +44,7 @@ def test_find_element_by_image_one_element_move_to(selenium, website):
     element = selenium.find_element_by_image("tests/html/browser_edge.png")
     element.move_to()
     assert (
-        selenium.find_element_by_id("message").text == "overedge1"
+        selenium.find_element(By.ID, "message").text == "overedge1"
     ), "click on element failed"
 
 
@@ -53,7 +53,7 @@ def test_find_element_by_image_one_element_move_at(selenium, website):
     element = selenium.find_element_by_image("tests/html/browser_edge.png")
     element.move_at(200, 200)
     assert (
-        selenium.find_element_by_id("message").text == "overchrome2"
+        selenium.find_element(By.ID, "message").text == "overchrome2"
     ), "click on element failed"
 
 
@@ -77,9 +77,9 @@ def test_find_element_by_image_click_need_scroll(selenium, website):
 
 def test_find_element_by_image_click_with_scroll(selenium, website):
     selenium.get(urljoin(website, "/browsers_scroll.htm"))
-    img_browsers = selenium.find_element_by_id("browsers")
+    img_browsers = selenium.find_element(By.ID, "browsers")
     selenium.execute_script("arguments[0].scrollIntoView();", img_browsers)
     selenium.find_element_by_image("tests/html/browser_edge.png").click()
     assert (
-        selenium.find_element_by_id("message").text == "edge1"
+        selenium.find_element(By.ID, "message").text == "edge1"
     ), "click on element failed"

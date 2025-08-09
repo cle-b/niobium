@@ -3,6 +3,4 @@ black
 flake8
 pre-commit
 pytest-selenium
-coverage
-tox
-codecov
+mypy
