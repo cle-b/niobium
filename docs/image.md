@@ -20,7 +20,7 @@ These methods have the same behavior than the classic `find_element` methods but
 
 They take only one argument which is the path to the PNG image that you search.
 
-## Find element by image
+## Find image
 
 The methods `find_image` and `find_images` are available only from the `WebDriver` object. Only the visible page is analyzed in order to locate the image.
 
