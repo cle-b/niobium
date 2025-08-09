@@ -4,7 +4,7 @@ Niobium extends the Python Selenium client with nice features.
 
 ## Why Niobium
 
-Selenium is a good tool for web automation, but sometimes it’s hard to write a clean automation script.
+Selenium is a good tool for web automation, but sometimes it's hard to write a clean automation script.
 
 With Niobium, you can keep using Selenium while simplifying your scripts. For example, Niobium adds a new element locator,` By.IMAGE`, which enables image recognition in `WebDriver.find_element` to locate an element on the webpage.
 
