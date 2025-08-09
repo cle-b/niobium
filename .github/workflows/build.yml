@@ -24,7 +24,7 @@ jobs:
         make testfirefox
 
   testpythonversion:
-    name: Test Python version
+    name: Test Python version with Firefox on Ubuntu
     needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -46,13 +46,13 @@ jobs:
         PIP_USE_PEP517: 1   
 
   testbrowseros:
-    name: Test another browser and others OS
+    name: Test OS with Chrome
     needs: testpythonversion
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-13, windows-latest]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.12
