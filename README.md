@@ -6,7 +6,7 @@ Niobium extends the Python Selenium client with nice features.
 
 Selenium is a good tool for web automation, but sometimes it's hard to write a clean automation script.
 
-With Niobium, you can keep using Selenium while simplifying your scripts. For example, Niobium adds a new element locator,` By.IMAGE`, which enables image recognition in `WebDriver.find_element` to locate an element on the webpage.
+With Niobium, you can keep using Selenium while simplifying your scripts. For example, Niobium adds a new method that uses image recognition to interact with the webpage.
 
 The goal of Niobium is not to replace Selenium. We only want to add to Selenium the functions we will love to see in Selenium natively.
 
@@ -30,7 +30,7 @@ In order to use Niobium, you just need to import it in your script. Selenium wil
     driver.implicitly_wait(10)
     driver.get("https://www.python.org/")
    
-    driver.find_element(By.IMAGE, "logo_python.png")
+    driver.find_image("logo_python.png")
 
     driver.quit()
 ```
