@@ -16,7 +16,7 @@ And to find multiple images (this method returns a list)
     find_elements(By.IMAGE, filename)
 ```
 
-These methods have the same behavior than the classic `find_element` methods but they return an `ImageElement` instead of a `WebElement` if you use the By.IMAGE selector.
+These methods have the same behavior than the classic `find_element` methods but they return an `ImageElement` instead of a `WebElement` if you use the `By.IMAGE` selector.
 
 They take only one argument which is the path to the PNG image that you search.
 
