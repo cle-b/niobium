@@ -18,10 +18,10 @@ jobs:
         make setup
         pip install -r requirements-dev.txt
         make check        
-    - name: Test Firefox/Ubuntu
+    - name: Run tests with chrome
       run: |
-        make firefox
-        make testfirefox
+        make chrome
+        make testchrome
 
   testpythonversion:
     name: Test Python version with Firefox on Ubuntu
@@ -42,28 +42,6 @@ jobs:
         make setup
         make firefox
         make testfirefox
-      env:
-        PIP_USE_PEP517: 1   
-
-  testbrowseros:
-    name: Test OS with Chrome
-    needs: testpythonversion
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
-    strategy:
-      matrix:
-        os: [macos-13, windows-latest]
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
-    - name: Run tests with Chrome
-      run: |
-        make setup
-        make chrome
-        make testchrome
       env:
         PIP_USE_PEP517: 1   
 
