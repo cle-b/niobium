@@ -87,7 +87,7 @@ def test_find_element_by_image_click_with_scroll(selenium, website):
 
 def test_find_element_not_by_image(selenium, website):
     selenium.get(urljoin(website, "/browsers.htm"))
-    for id in ["chrome1", "firefox2"]:
+    for id in ["fe1", "fe2"]:
         selenium.find_element(By.ID, id).click()
         assert (
             selenium.find_element(By.ID, "message").text == id
