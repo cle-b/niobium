@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "niobium"
+authors = [
+    {name = "cle-b", email = "cle@tictac.pm"},
+]
+description="Niobium extends the Python Selenium client with nice features"
+readme="README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "selenium>=4",
+    "opencv-python",
+    "pillow"
+]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: User Interfaces",
+]
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "niobium.__version__"}
+
+[project.urls]
+Repository = "https://github.com/cle-b/niobium/"
+Documentation = "https://niobium.readthedocs.io/"
+
+[tool.mypy]
+no_implicit_optional = false
+disable_error_code= ["method-assign",]
+files = ["niobium"]
