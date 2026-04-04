@@ -1,4 +1,4 @@
-from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webelement import WebElement
 
 from typing import Union
@@ -41,7 +41,7 @@ def __web_element_move_and_click(
     yoffset: Union[int, None],
     click: bool,
 ):
-    action = webdriver.common.action_chains.ActionChains(webelement.parent)
+    action = ActionChains(webelement.parent)
     if xoffset is None or yoffset is None:
         action.move_to_element(webelement)
     else:

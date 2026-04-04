@@ -1,4 +1,4 @@
-from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from typing import Dict
@@ -94,7 +94,7 @@ class ImageElement(object):
         else:
             yoffset = self.location["y"] + yoffset
 
-        action = webdriver.common.action_chains.ActionChains(self.parent)
+        action = ActionChains(self.parent)
         offset_element = self.__get_element_top_left()
         action.move_to_element_with_offset(offset_element, xoffset, yoffset)
         if click:
