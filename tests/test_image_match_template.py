@@ -4,7 +4,6 @@ import cv2
 
 from niobium.find_image import match_template
 
-
 img_dir = os.path.dirname(os.path.realpath(__file__))
 
 

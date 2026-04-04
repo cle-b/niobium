@@ -7,10 +7,10 @@ setup:
 	pip install -r requirements-dev.txt
 
 format:
-	black niobium tests
+	black niobium tests --target-version py39
 
 lint:
-	black --check niobium tests
+	black --check niobium tests --target-version py39
 	flake8 niobium tests
 
 
